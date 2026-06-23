@@ -864,7 +864,8 @@ static std::string build_cmd(const InstallMethod& m, const std::string& scripts_
     std::string pkg=m.package.empty()?"":m.package;
     if(m.pm=="apt"||m.pm=="apt-get"){
         return uninstall?sudo_prefix+"apt-get remove -y \""+pkg+"\" && sudo apt-get autoremove -y 2>&1"
-                        :sudo_prefix+"apt-get update && apt-get install -y \""+pkg+"\" 2>&1";
+                        :sudo_prefix+"apt-get update &&"
+                        +sudo_prefix+" apt-get install -y \""+pkg+"\" 2>&1";
     }
     if(m.pm=="dnf"||m.pm=="yum"){
         return uninstall?sudo_prefix+m.pm+" remove -y \""+pkg+"\" 2>&1"
