@@ -521,9 +521,9 @@ scrollbar{background:transparent;border:none;}
 scrollbar slider{background:rgba(58,97,70,0.18);border-radius:6px;min-width:6px;min-height:6px;}
 scrollbar slider:hover{background:rgba(58,97,70,0.35);}
 
-.titlebar-button{border: #f5f3ed 1px solid;border-radius: 0;min-width: 36px;min-height: 32px;}
-.titlebar-button:hover {background: alpha(white, 0.08);}
-.titlebar-close{border: #f5f3ed 1px solid;border-radius: 0;min-width: 36px;min-height: 32px;}
+.titlebar-button{border: #f5f3ed 1px solid;border-radius: 0;color:white;min-width: 36px;min-height: 32px;}
+.titlebar-button:hover {background: alpha(white, 0.08);color: white;}
+.titlebar-close{border: #f5f3ed 1px solid;border-radius: 0;color:white;min-width: 36px;min-height: 32px;}
 .titlebar-close:hover {background: #e81123;color: white;}
 
 .username-value {color: #6b6358;font-size: 14px;}
