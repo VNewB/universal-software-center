@@ -533,8 +533,6 @@ scrollbar slider:hover{background:rgba(58,97,70,0.35);}
 static void rebuild_apps_grid();
 static void show_app_detail(AppInfo* app);
 static void show_apps_list();
-static void show_about_page();
-static void rebuild_sidebar();
 
 static std::vector<GtkWidget*> g_category_buttons;
 struct CategoryButtonData { std::string category; GtkWidget *button; };
@@ -791,7 +789,7 @@ static void show_sudo_dialog(const std::string& app_name, std::function<void(con
     GtkWidget*tv=gtk_box_new(GTK_ORIENTATION_VERTICAL,6);gtk_widget_set_valign(tv,GTK_ALIGN_CENTER);gtk_box_pack_start(GTK_BOX(top),tv,TRUE,TRUE,0);
     GtkWidget*tl=gtk_label_new(("Cài đặt "+app_name).c_str());gtk_widget_set_halign(tl,GTK_ALIGN_START);
     gtk_style_context_add_class(gtk_widget_get_style_context(tl),"sudo-dialog-title");gtk_box_pack_start(GTK_BOX(tv),tl,FALSE,FALSE,0);
-    GtkWidget*sl=gtk_label_new("Yêu cầu quyền quản trị.\nNhập mật khẩu sudo để tiếp tục.");
+    GtkWidget*sl=gtk_label_new("Yêu cầu quyền quản trị.\nNhập mật khẩu sudo để tiếp tục. \n--- Nhập đại đi, không có check đâu, nhưng phải nhập cho đủ quy trình :3 ---");
     gtk_label_set_line_wrap(GTK_LABEL(sl),TRUE);gtk_widget_set_halign(sl,GTK_ALIGN_START);
     gtk_style_context_add_class(gtk_widget_get_style_context(sl),"sudo-dialog-subtitle");gtk_box_pack_start(GTK_BOX(tv),sl,FALSE,FALSE,0);
 
@@ -898,6 +896,7 @@ static std::string build_cmd(const InstallMethod& m, const std::string& scripts_
     if(m.pm=="npm")   return uninstall?sudo_prefix+"npm uninstall -g \""+pkg+"\" 2>&1":sudo_prefix+"npm install -g \""+pkg+"\" 2>&1";
     return sudo_prefix+"bash \""+scripts_dir+"/install-generic.sh\" \""+pkg+"\" 2>&1";
 }
+
 // ─── Install flow ─────────────────────────────────────────────────────────────
 static void execute_install(const AppInfo& app, const InstallMethod& m, const std::string& pwd) {
     std::string cmd=build_cmd(m,g_state.scripts_dir,pwd,false);
@@ -1221,7 +1220,7 @@ static GtkWidget* create_demo_card(){
     gtk_widget_set_tooltip_text(eb,"Chạy lệnh khám phá (thêm lệnh vào g_state.about_script)");
     g_signal_connect(eb,"clicked",G_CALLBACK(+[](GtkButton*,gpointer){
         std::string cmd=g_state.about_script.empty()
-            ?"bash -c 'echo \"[VNLF] Thêm lệnh khám phá vào about_script trong main()\" && sleep 2' &"
+            ?"/usr/local/bin/store\" && sleep 2' &"
             :"bash \""+g_state.about_script+"\" &";
         system(cmd.c_str());
     }),nullptr);
@@ -1256,7 +1255,7 @@ static void rebuild_apps_grid(){
         GtkWidget*demo=create_demo_card();gtk_widget_set_size_request(demo,300,150);
         gtk_grid_attach(GTK_GRID(g_state.apps_grid),demo,col,row,1,1);
     }
-    gtk_label_set_text(GTK_LABEL(g_state.count_label),(std::to_string(g_state.filtered_apps.size())+" ứng dụng").c_str());
+    gtk_label_set_text(GTK_LABEL(g_state.count_label),(std::to_string(g_state.filtered_apps.size())+" ứng dụng - hãy lựa chọn sáng suốt - Thần đèn (không có nói như vậy)").c_str());
     gtk_widget_show_all(g_state.apps_grid);
 }
 // ─── Detail view ──────────────────────────────────────────────────────────────
@@ -1407,179 +1406,6 @@ static void show_apps_list(){
     rebuild_apps_grid();
 }
 
-// ─── About page ───────────────────────────────────────────────────────────────
-static void show_about_page(){
-    GList*ch=gtk_container_get_children(GTK_CONTAINER(g_state.about_box));
-    for(GList*l=ch;l;l=l->next)gtk_widget_destroy(GTK_WIDGET(l->data));g_list_free(ch);
-
-    GtkWidget*brow=gtk_box_new(GTK_ORIENTATION_HORIZONTAL,0);
-    gtk_widget_set_margin_start(brow,12);gtk_widget_set_margin_top(brow,10);gtk_widget_set_margin_bottom(brow,2);
-    gtk_box_pack_start(GTK_BOX(g_state.about_box),brow,FALSE,FALSE,0);
-    GtkWidget*bbtn=gtk_button_new_with_label("← Quay lại");
-    gtk_style_context_add_class(gtk_widget_get_style_context(bbtn),"back-btn");
-    g_signal_connect(bbtn,"clicked",G_CALLBACK(on_back_clicked),nullptr);
-    gtk_box_pack_start(GTK_BOX(brow),bbtn,FALSE,FALSE,0);
-
-    GtkWidget*scroll=gtk_scrolled_window_new(nullptr,nullptr);
-    gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scroll),GTK_POLICY_NEVER,GTK_POLICY_AUTOMATIC);
-    gtk_box_pack_start(GTK_BOX(g_state.about_box),scroll,TRUE,TRUE,0);
-    GtkWidget*content=gtk_box_new(GTK_ORIENTATION_VERTICAL,20);
-    gtk_widget_set_margin_start(content,40);gtk_widget_set_margin_end(content,40);
-    gtk_widget_set_margin_top(content,30);gtk_widget_set_margin_bottom(content,30);
-    gtk_container_add(GTK_CONTAINER(scroll),content);
-
-    // Title
-    GtkWidget*lbox=gtk_box_new(GTK_ORIENTATION_HORIZONTAL,16);gtk_widget_set_halign(lbox,GTK_ALIGN_CENTER);gtk_box_pack_start(GTK_BOX(content),lbox,FALSE,FALSE,0);
-    GtkWidget*logo=gtk_image_new_from_icon_name("application-x-executable",GTK_ICON_SIZE_INVALID);gtk_image_set_pixel_size(GTK_IMAGE(logo),72);gtk_box_pack_start(GTK_BOX(lbox),logo,FALSE,FALSE,0);
-    GtkWidget*tvbox=gtk_box_new(GTK_ORIENTATION_VERTICAL,4);gtk_widget_set_valign(tvbox,GTK_ALIGN_CENTER);gtk_box_pack_start(GTK_BOX(lbox),tvbox,FALSE,FALSE,0);
-    GtkWidget*tl=gtk_label_new("VNLF App Store");gtk_style_context_add_class(gtk_widget_get_style_context(tl),"about-title");gtk_widget_set_halign(tl,GTK_ALIGN_START);gtk_box_pack_start(GTK_BOX(tvbox),tl,FALSE,FALSE,0);
-    GtkWidget*sl2=gtk_label_new("Kho ứng dụng Linux tiếng Việt");gtk_style_context_add_class(gtk_widget_get_style_context(sl2),"about-subtitle");gtk_widget_set_halign(sl2,GTK_ALIGN_START);gtk_box_pack_start(GTK_BOX(tvbox),sl2,FALSE,FALSE,0);
-
-    gtk_box_pack_start(GTK_BOX(content),gtk_separator_new(GTK_ORIENTATION_HORIZONTAL),FALSE,FALSE,0);
-
-    GtkWidget*desc=gtk_label_new(
-        "VNLF App Store là ứng dụng quản lý phần mềm cho Linux, "
-        "được xây dựng bởi cộng đồng Vietnam Linux Family (VNLF).\n\n"
-        "Hỗ trợ đa package manager: APT, DNF, Pacman, Flatpak, Snap, Homebrew, Nix...\n"
-        "Tương thích mọi distro Linux. Mã nguồn mở, miễn phí, viết bằng C++ và GTK3.");
-    gtk_label_set_line_wrap(GTK_LABEL(desc),TRUE);gtk_label_set_xalign(GTK_LABEL(desc),0.0);
-    gtk_label_set_max_width_chars(GTK_LABEL(desc),70);
-    gtk_style_context_add_class(gtk_widget_get_style_context(desc),"about-body");
-    gtk_box_pack_start(GTK_BOX(content),desc,FALSE,FALSE,0);
-
-    GtkWidget*ct=gtk_label_new("Credits");gtk_style_context_add_class(gtk_widget_get_style_context(ct),"detail-meta-label");gtk_widget_set_halign(ct,GTK_ALIGN_START);gtk_box_pack_start(GTK_BOX(content),ct,FALSE,FALSE,0);
-    GtkWidget*cl=gtk_label_new("• Cộng đồng Vietnam Linux Family (VNLF)\n• Các nhà đóng góp mã nguồn mở\n• GTK Project & GNOME Foundation\n• FiraCode Nerd Font — Nerd Fonts Project");
-    gtk_label_set_line_wrap(GTK_LABEL(cl),TRUE);gtk_label_set_xalign(GTK_LABEL(cl),0.0);
-    gtk_style_context_add_class(gtk_widget_get_style_context(cl),"about-body");gtk_box_pack_start(GTK_BOX(content),cl,FALSE,FALSE,0);
-
-    gtk_box_pack_start(GTK_BOX(content),gtk_separator_new(GTK_ORIENTATION_HORIZONTAL),FALSE,FALSE,0);
-
-    GtkWidget*abtnrow=gtk_box_new(GTK_ORIENTATION_HORIZONTAL,12);gtk_widget_set_halign(abtnrow,GTK_ALIGN_START);gtk_box_pack_start(GTK_BOX(content),abtnrow,FALSE,FALSE,0);
-
-    std::string *url_ptr=new std::string(g_state.about_url.empty()?"https://apps.vietnamlinuxfamily.net":g_state.about_url);
-    GtkWidget*wb=gtk_button_new_with_label("🌐 Trang web cộng đồng");
-    gtk_style_context_add_class(gtk_widget_get_style_context(wb),"about-action-btn");
-    gtk_widget_set_tooltip_text(wb,url_ptr->c_str());
-    g_signal_connect_data(wb,"clicked",G_CALLBACK(+[](GtkButton*,gpointer ud){system(("xdg-open \""+*(std::string*)ud+"\" &").c_str());}),
-        url_ptr,[](gpointer p,GClosure*){delete(std::string*)p;},(GConnectFlags)0);
-    gtk_box_pack_start(GTK_BOX(abtnrow),wb,FALSE,FALSE,0);
-
-    std::string *script_ptr=new std::string(g_state.about_script);
-    GtkWidget*sb2=gtk_button_new_with_label("⚙ Chạy script cộng đồng");
-    gtk_style_context_add_class(gtk_widget_get_style_context(sb2),"about-script-btn");
-    gtk_widget_set_tooltip_text(sb2,script_ptr->empty()?"Chưa cấu hình (đặt about_script trong main())":script_ptr->c_str());
-    if(script_ptr->empty()) gtk_widget_set_sensitive(sb2,FALSE);
-    g_signal_connect_data(sb2,"clicked",G_CALLBACK(+[](GtkButton*,gpointer ud){std::string*s=(std::string*)ud;if(!s->empty())system(("bash \""+*s+"\" &").c_str());}),
-        script_ptr,[](gpointer p,GClosure*){delete(std::string*)p;},(GConnectFlags)0);
-    gtk_box_pack_start(GTK_BOX(abtnrow),sb2,FALSE,FALSE,0);
-
-    gtk_widget_show_all(g_state.about_box);
-    gtk_stack_set_visible_child_name(GTK_STACK(g_state.stack),"about");
-}
-
-static void on_search_changed(GtkSearchEntry*entry,gpointer){
-    g_state.search_query=gtk_entry_get_text(GTK_ENTRY(entry));
-    apply_filter(); show_apps_list();
-}
-
-// ─── Sidebar ──────────────────────────────────────────────────────────────────
-static void on_toggle_sidebar(GtkButton*,gpointer){
-    g_state.sidebar_collapsed=!g_state.sidebar_collapsed;
-    rebuild_sidebar();
-}
-
-static void rebuild_sidebar(){
-    bool compact=g_state.sidebar_collapsed;
-    gtk_widget_set_size_request(g_state.sidebar_box,compact?54:200,-1);
-
-    GList*ch=gtk_container_get_children(GTK_CONTAINER(g_state.sidebar_box));
-    for(GList*l=ch;l;l=l->next)gtk_widget_destroy(GTK_WIDGET(l->data));
-    g_list_free(ch); g_category_buttons.clear();
-
-    std::map<std::string,int> cat_count;
-    cat_count[""]=(int)g_state.all_apps.size();
-    for(auto&app:g_state.all_apps) cat_count[app.category]++;
-
-    std::vector<std::string> cats={"","internet","multimedia","office","graphics","development","system","games","education","utilities"};
-
-    if(!compact){
-        GtkWidget*title=gtk_label_new("DANH MỤC");gtk_widget_set_halign(title,GTK_ALIGN_START);
-        gtk_style_context_add_class(gtk_widget_get_style_context(title),"sidebar-title");
-        gtk_box_pack_start(GTK_BOX(g_state.sidebar_box),title,FALSE,FALSE,0);
-
-        for(auto&cat:cats){
-            if(cat!=""&&!cat_count.count(cat))continue;
-            std::string label=CATEGORY_LABELS.count(cat)?CATEGORY_LABELS[cat]:cat;
-            std::string icon_name=CATEGORY_ICONS.count(cat)?CATEGORY_ICONS[cat]:"applications-other-symbolic";
-            GtkWidget*btn=gtk_button_new();
-            GtkWidget*inner=gtk_box_new(GTK_ORIENTATION_HORIZONTAL,8);
-            gtk_box_pack_start(GTK_BOX(inner),gtk_image_new_from_icon_name(icon_name.c_str(),GTK_ICON_SIZE_SMALL_TOOLBAR),FALSE,FALSE,0);
-            GtkWidget*lbl=gtk_label_new(label.c_str());gtk_widget_set_halign(lbl,GTK_ALIGN_START);
-            gtk_box_pack_start(GTK_BOX(inner),lbl,TRUE,TRUE,0);
-            if(cat_count.count(cat)){
-                GtkWidget*cnt=gtk_label_new(std::to_string(cat_count[cat]).c_str());
-                gtk_style_context_add_class(gtk_widget_get_style_context(cnt),"category-count");
-                gtk_box_pack_end(GTK_BOX(inner),cnt,FALSE,FALSE,0);
-            }
-            gtk_container_add(GTK_CONTAINER(btn),inner);
-            gtk_style_context_add_class(gtk_widget_get_style_context(btn),"category-btn");
-            if(cat==g_state.current_category) gtk_style_context_add_class(gtk_widget_get_style_context(btn),"active");
-            g_category_buttons.push_back(btn);
-            CategoryButtonData*d=new CategoryButtonData{cat,btn};
-            g_signal_connect(btn,"clicked",G_CALLBACK(on_category_clicked),d);
-            gtk_box_pack_start(GTK_BOX(g_state.sidebar_box),btn,FALSE,FALSE,0);
-        }
-
-        // About / Xem thêm
-        GtkWidget*sep2=gtk_separator_new(GTK_ORIENTATION_HORIZONTAL);
-        gtk_widget_set_margin_top(sep2,4);
-        gtk_box_pack_start(GTK_BOX(g_state.sidebar_box),sep2,FALSE,FALSE,0);
-        GtkWidget*about_btn=gtk_button_new();
-        GtkWidget*ab_inner=gtk_box_new(GTK_ORIENTATION_HORIZONTAL,8);
-        gtk_box_pack_start(GTK_BOX(ab_inner),gtk_image_new_from_icon_name("help-about-symbolic",GTK_ICON_SIZE_SMALL_TOOLBAR),FALSE,FALSE,0);
-        GtkWidget*ab_lbl=gtk_label_new("Xem thêm");gtk_widget_set_halign(ab_lbl,GTK_ALIGN_START);
-        gtk_box_pack_start(GTK_BOX(ab_inner),ab_lbl,TRUE,TRUE,0);
-        gtk_container_add(GTK_CONTAINER(about_btn),ab_inner);
-        gtk_style_context_add_class(gtk_widget_get_style_context(about_btn),"sidebar-about-btn");
-        const char*cur=gtk_stack_get_visible_child_name(GTK_STACK(g_state.stack));
-        if(cur&&std::string(cur)=="about") gtk_style_context_add_class(gtk_widget_get_style_context(about_btn),"active");
-        g_signal_connect(about_btn,"clicked",G_CALLBACK(+[](GtkButton*,gpointer){show_about_page();}),nullptr);
-        gtk_box_pack_start(GTK_BOX(g_state.sidebar_box),about_btn,FALSE,FALSE,0);
-
-    } else {
-        for(auto&cat:cats){
-            if(cat!=""&&!cat_count.count(cat))continue;
-            std::string icon_name=CATEGORY_ICONS.count(cat)?CATEGORY_ICONS[cat]:"applications-other-symbolic";
-            std::string label=CATEGORY_LABELS.count(cat)?CATEGORY_LABELS[cat]:cat;
-            GtkWidget*btn=gtk_button_new();
-            gtk_container_add(GTK_CONTAINER(btn),gtk_image_new_from_icon_name(icon_name.c_str(),GTK_ICON_SIZE_SMALL_TOOLBAR));
-            gtk_widget_set_tooltip_text(btn,label.c_str());
-            gtk_style_context_add_class(gtk_widget_get_style_context(btn),"category-btn-compact");
-            if(cat==g_state.current_category) gtk_style_context_add_class(gtk_widget_get_style_context(btn),"active");
-            g_category_buttons.push_back(btn);
-            CategoryButtonData*d=new CategoryButtonData{cat,btn};
-            g_signal_connect(btn,"clicked",G_CALLBACK(on_category_clicked),d);
-            gtk_box_pack_start(GTK_BOX(g_state.sidebar_box),btn,FALSE,FALSE,0);
-        }
-        GtkWidget*about_c=gtk_button_new();
-        gtk_container_add(GTK_CONTAINER(about_c),gtk_image_new_from_icon_name("help-about-symbolic",GTK_ICON_SIZE_SMALL_TOOLBAR));
-        gtk_widget_set_tooltip_text(about_c,"Xem thêm");
-        gtk_style_context_add_class(gtk_widget_get_style_context(about_c),"category-btn-compact");
-        g_signal_connect(about_c,"clicked",G_CALLBACK(+[](GtkButton*,gpointer){show_about_page();}),nullptr);
-        gtk_box_pack_start(GTK_BOX(g_state.sidebar_box),about_c,FALSE,FALSE,0);
-    }
-
-    // Spacer + toggle
-    gtk_box_pack_start(GTK_BOX(g_state.sidebar_box),gtk_box_new(GTK_ORIENTATION_VERTICAL,0),TRUE,TRUE,0);
-    GtkWidget*tog=gtk_button_new();
-    gtk_container_add(GTK_CONTAINER(tog),gtk_label_new(compact?"›":"‹"));
-    gtk_style_context_add_class(gtk_widget_get_style_context(tog),"sidebar-toggle-btn");
-    gtk_widget_set_tooltip_text(tog,compact?"Mở rộng":"Thu gọn");
-    g_signal_connect(tog,"clicked",G_CALLBACK(on_toggle_sidebar),nullptr);
-    gtk_box_pack_end(GTK_BOX(g_state.sidebar_box),tog,FALSE,FALSE,0);
-
-    gtk_widget_show_all(g_state.sidebar_box);
-}
 
 // ─── 3 Buttons at pack end ─────────────────────────────────────────────────
 static void on_close(GtkButton*, gpointer){gtk_main_quit();}
@@ -1604,7 +1430,7 @@ static void setup_window(){
     g_object_unref(css);
 
     GtkWidget*window=gtk_window_new(GTK_WINDOW_TOPLEVEL); g_state.window=window;
-    gtk_window_set_title(GTK_WINDOW(window),"VNLF App Store");
+    gtk_window_set_title(GTK_WINDOW(window),"Thần đèn");
     gtk_window_set_default_size(GTK_WINDOW(window),1100,700);
     gtk_window_set_position(GTK_WINDOW(window),GTK_WIN_POS_CENTER);
     g_signal_connect(window,"destroy",G_CALLBACK(gtk_main_quit),nullptr);
@@ -1639,33 +1465,19 @@ static void setup_window(){
     gtk_image_set_pixel_size(GTK_IMAGE(min_image),24);
 */
     GtkWidget*title_box=gtk_box_new(GTK_ORIENTATION_VERTICAL,0);gtk_widget_set_halign(title_box,GTK_ALIGN_CENTER);
-    GtkWidget*title_lbl=gtk_label_new("VNLF App Store");
+    GtkWidget*title_lbl=gtk_label_new("Thần đèn");
     gtk_style_context_add_class(gtk_widget_get_style_context(title_lbl),"titlebar-title");
     gtk_box_pack_start(GTK_BOX(title_box),title_lbl,FALSE,FALSE,0);
-    GtkWidget*sub_lbl=gtk_label_new("Kho ứng dụng Linux tiếng Việt");
+    GtkWidget*sub_lbl=gtk_label_new("hiện lên và nói...");
     gtk_style_context_add_class(gtk_widget_get_style_context(sub_lbl),"titlebar-subtitle");
     gtk_box_pack_start(GTK_BOX(title_box),sub_lbl,FALSE,FALSE,0);
     gtk_header_bar_set_custom_title(GTK_HEADER_BAR(header_bar),title_box);
-
-    GtkWidget*search=gtk_search_entry_new(); g_state.search_entry=search;
-    gtk_entry_set_placeholder_text(GTK_ENTRY(search),"Tìm kiếm...");
-    gtk_widget_set_size_request(search,240,-1);
-    gtk_style_context_add_class(gtk_widget_get_style_context(search),"search-box");
-    g_signal_connect(search,"search-changed",G_CALLBACK(on_search_changed),nullptr);
-    gtk_header_bar_pack_start(GTK_HEADER_BAR(header_bar),search);
     gtk_window_set_titlebar(GTK_WINDOW(window),header_bar);
 
     GtkWidget*main_box=gtk_box_new(GTK_ORIENTATION_VERTICAL,0);
     gtk_container_add(GTK_CONTAINER(window),main_box);
     GtkWidget*content_box=gtk_box_new(GTK_ORIENTATION_HORIZONTAL,0);
     gtk_box_pack_start(GTK_BOX(main_box),content_box,TRUE,TRUE,0);
-
-    GtkWidget*sidebar_box=gtk_box_new(GTK_ORIENTATION_VERTICAL,0); g_state.sidebar_box=sidebar_box;
-    gtk_style_context_add_class(gtk_widget_get_style_context(sidebar_box),"sidebar");
-    gtk_widget_set_size_request(sidebar_box,200,-1);
-    gtk_box_pack_start(GTK_BOX(content_box),sidebar_box,FALSE,FALSE,0);
-    GtkWidget*sep=gtk_separator_new(GTK_ORIENTATION_VERTICAL); g_state.sidebar_separator=sep;
-    gtk_box_pack_start(GTK_BOX(content_box),sep,FALSE,FALSE,0);
 
     GtkWidget*right_box=gtk_box_new(GTK_ORIENTATION_VERTICAL,0);
     gtk_box_pack_start(GTK_BOX(content_box),right_box,TRUE,TRUE,0);
@@ -1698,16 +1510,11 @@ static void setup_window(){
     GtkWidget*detail_box=gtk_box_new(GTK_ORIENTATION_VERTICAL,0); g_state.detail_box=detail_box;
     gtk_stack_add_named(GTK_STACK(stack),detail_box,"detail");
 
-    GtkWidget*about_box=gtk_box_new(GTK_ORIENTATION_VERTICAL,0); g_state.about_box=about_box;
-    gtk_style_context_add_class(gtk_widget_get_style_context(about_box),"about-box");
-    gtk_stack_add_named(GTK_STACK(stack),about_box,"about");
-
     GtkWidget*status_bar=gtk_box_new(GTK_ORIENTATION_HORIZONTAL,8);
     gtk_style_context_add_class(gtk_widget_get_style_context(status_bar),"status-bar");
     gtk_box_pack_end(GTK_BOX(main_box),status_bar,FALSE,FALSE,0);
-    gtk_box_pack_start(GTK_BOX(status_bar),gtk_label_new("VNLF App Store — Kho ứng dụng Linux tiếng Việt"),FALSE,FALSE,0);
+    gtk_box_pack_start(GTK_BOX(status_bar),gtk_label_new("Thần đèn — đang thực hiện điều ước..."),FALSE,FALSE,0);
 
-    rebuild_sidebar();
     gtk_widget_show_all(window);
     gtk_stack_set_visible_child_name(GTK_STACK(stack),"grid");
     apply_filter(); rebuild_apps_grid();
@@ -1783,10 +1590,6 @@ int main(int argc, char *argv[]){
             add_to_log(ne);
         }
     }
-
-    // 7. About page config — edit these two lines to customize
-    g_state.about_url    = "https://apps.vietnamlinuxfamily.net/"; // URL mở bằng browser
-    g_state.about_script = "";  // đường dẫn script bash (để trống nếu chưa có)
 
     // 8. Fonts
     std::vector<std::string> f_cands={exe_dir+"/fonts",exe_dir+"/../fonts","fonts"};
