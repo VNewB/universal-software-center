@@ -25,14 +25,14 @@ endif
 # fontconfig luôn cần để load font động
 EXTRA_LIBS = -lfontconfig
 
-TARGET   = vnlf-store
+TARGET   = store
 SRCDIR   = src
 BUILDDIR = build
 SOURCES  = $(SRCDIR)/main.cpp
 OBJECTS  = $(BUILDDIR)/main.o
 
 PREFIX  = /usr/local
-DATADIR = $(PREFIX)/share/vnlf-store
+DATADIR = $(PREFIX)/share/store
 BINDIR  = $(PREFIX)/bin
 
 .PHONY: all clean install uninstall run

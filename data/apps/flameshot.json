@@ -1,0 +1,20 @@
+{
+  "id": "flameshot",
+  "name": "Flameshot",
+  "summary": "Công cụ chụp màn hình mạnh mẽ với tính năng chú thích",
+  "description": "Flameshot là công cụ chụp màn hình linh hoạt với khả năng chú thích ngay sau khi chụp, vẽ mũi tên, khoanh vùng, làm mờ nội dung nhạy cảm và chia sẻ nhanh lên Imgur.",
+  "category": "utilities",
+  "icon": "flameshot",
+  "version": "12.1",
+  "author": "Flameshot Team",
+  "license": "GPL-3.0",
+  "website": "https://flameshot.org/",
+  "script": "",
+  "tags": ["chụp màn hình", "screenshot", "annotation", "capture"],
+  "install_methods": [
+    { "pm": "apt", "package": "flameshot" },
+    { "pm": "dnf", "package": "flameshot" },
+    { "pm": "pacman", "package": "flameshot" },
+    { "pm": "flatpak", "package": "org.flameshot.Flameshot" }
+  ]
+}

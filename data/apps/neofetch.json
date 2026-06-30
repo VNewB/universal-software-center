@@ -1,0 +1,19 @@
+{
+  "id": "neofetch",
+  "name": "Neofetch",
+  "summary": "Công cụ hiển thị thông tin hệ thống đẹp trên terminal",
+  "description": "Neofetch là công cụ dòng lệnh hiển thị thông tin hệ thống Linux một cách trực quan và đẹp mắt kèm logo ASCII của distro. Hiển thị CPU, RAM, kernel, DE và nhiều thông tin khác.",
+  "category": "system",
+  "icon": "utilities-terminal",
+  "version": "7.1.0",
+  "author": "dylanaraps",
+  "license": "MIT",
+  "website": "https://github.com/dylanaraps/neofetch",
+  "script": "",
+  "tags": ["terminal", "thông tin hệ thống", "fetch", "cli"],
+  "install_methods": [
+    { "pm": "apt", "package": "neofetch" },
+    { "pm": "dnf", "package": "neofetch" },
+    { "pm": "pacman", "package": "neofetch" }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "dbeaver",
+  "name": "DBeaver",
+  "summary": "Công cụ quản lý cơ sở dữ liệu đa năng",
+  "description": "DBeaver là công cụ quản lý cơ sở dữ liệu miễn phí, hỗ trợ hơn 80 loại database khác nhau bao gồm MySQL, PostgreSQL, SQLite, Oracle, MongoDB và nhiều hơn nữa. Giao diện trực quan, nhiều tính năng mạnh mẽ.",
+  "category": "development",
+  "icon": "dbeaver",
+  "version": "24.0",
+  "author": "DBeaver Corp",
+  "license": "Apache-2.0",
+  "website": "https://dbeaver.io/",
+  "script": "",
+  "tags": ["database", "sql", "mysql", "postgresql", "developer"],
+  "install_methods": [
+    { "pm": "flatpak", "package": "io.dbeaver.DBeaverCommunity" },
+    { "pm": "snap", "package": "dbeaver-ce" }
+  ]
+}

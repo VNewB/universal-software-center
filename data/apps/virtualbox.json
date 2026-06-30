@@ -1,0 +1,20 @@
+{
+  "id": "virtualbox",
+  "name": "VirtualBox",
+  "summary": "Phần mềm máy ảo mạnh mẽ, hỗ trợ nhiều hệ điều hành",
+  "description": "Oracle VirtualBox là phần mềm ảo hóa mã nguồn mở miễn phí, cho phép chạy nhiều hệ điều hành song song trên một máy tính. Hỗ trợ Windows, Linux, macOS và nhiều hệ điều hành khác.",
+  "category": "system",
+  "icon": "virtualbox",
+  "version": "7.0",
+  "author": "Oracle",
+  "license": "GPL-2.0",
+  "website": "https://www.virtualbox.org/",
+  "script": "",
+  "tags": ["máy ảo", "virtual machine", "ảo hóa", "virtualization"],
+  "install_methods": [
+    { "pm": "apt", "package": "virtualbox" },
+    { "pm": "dnf", "package": "VirtualBox" },
+    { "pm": "pacman", "package": "virtualbox" },
+    { "pm": "flatpak", "package": "org.virtualbox.VirtualBox" }
+  ]
+}

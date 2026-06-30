@@ -1,0 +1,19 @@
+{
+  "id": "timeshift",
+  "name": "Timeshift",
+  "summary": "Công cụ sao lưu và khôi phục hệ thống Linux",
+  "description": "Timeshift là phần mềm tạo điểm khôi phục hệ thống tương tự Time Machine của macOS hay System Restore của Windows. Sao lưu toàn bộ hệ thống và dễ dàng quay lại trạng thái trước đó.",
+  "category": "system",
+  "icon": "timeshift",
+  "version": "24.01",
+  "author": "Tony George",
+  "license": "GPL-3.0",
+  "website": "https://github.com/linuxmint/timeshift",
+  "script": "",
+  "tags": ["sao lưu", "backup", "restore", "system", "snapshot"],
+  "install_methods": [
+    { "pm": "apt", "package": "timeshift" },
+    { "pm": "dnf", "package": "timeshift" },
+    { "pm": "pacman", "package": "timeshift" }
+  ]
+}

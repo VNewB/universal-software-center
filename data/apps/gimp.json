@@ -1,36 +1,21 @@
 {
   "id": "gimp",
   "name": "GIMP",
-  "summary": "Phần mềm chỉnh sửa ảnh chuyên nghiệp miễn phí",
-  "description": "GIMP (GNU Image Manipulation Program) là phần mềm chỉnh sửa ảnh mã nguồn mở mạnh mẽ. Hỗ trợ nhiều định dạng, plugin phong phú.",
+  "summary": "Phần mềm chỉnh sửa ảnh chuyên nghiệp mã nguồn mở",
+  "description": "GIMP (GNU Image Manipulation Program) là phần mềm chỉnh sửa ảnh mã nguồn mở miễn phí, là lựa chọn thay thế mạnh mẽ cho Adobe Photoshop. Hỗ trợ nhiều plugin và script để mở rộng chức năng.",
   "category": "graphics",
   "icon": "gimp",
   "version": "2.10.36",
-  "author": "GIMP Team",
+  "author": "The GIMP Team",
   "license": "GPL-3.0",
   "website": "https://www.gimp.org/",
   "script": "",
-  "tags": [
-    "ảnh",
-    "đồ họa",
-    "thiết kế"
-  ],
+  "tags": ["đồ họa", "ảnh", "chỉnh sửa", "photoshop"],
   "install_methods": [
-    {
-      "pm": "apt",
-      "package": "gimp"
-    },
-    {
-      "pm": "dnf",
-      "package": "gimp"
-    },
-    {
-      "pm": "pacman",
-      "package": "gimp"
-    },
-    {
-      "pm": "flatpak",
-      "package": "org.gimp.GIMP"
-    }
+    { "pm": "apt", "package": "gimp" },
+    { "pm": "dnf", "package": "gimp" },
+    { "pm": "pacman", "package": "gimp" },
+    { "pm": "flatpak", "package": "org.gimp.GIMP" },
+    { "pm": "snap", "package": "gimp" }
   ]
 }

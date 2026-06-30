@@ -1,0 +1,21 @@
+{
+  "id": "krita",
+  "name": "Krita",
+  "summary": "Phần mềm vẽ kỹ thuật số chuyên nghiệp cho nghệ sĩ",
+  "description": "Krita là phần mềm vẽ kỹ thuật số và chỉnh sửa ảnh mã nguồn mở, được thiết kế đặc biệt cho họa sĩ, illustrator và concept artist. Hỗ trợ nhiều loại bút, layer và hiệu ứng chuyên nghiệp.",
+  "category": "graphics",
+  "icon": "krita",
+  "version": "5.2.2",
+  "author": "KDE",
+  "license": "GPL-3.0",
+  "website": "https://krita.org/",
+  "script": "",
+  "tags": ["vẽ", "đồ họa", "painting", "digital art", "illustration"],
+  "install_methods": [
+    { "pm": "apt", "package": "krita" },
+    { "pm": "dnf", "package": "krita" },
+    { "pm": "pacman", "package": "krita" },
+    { "pm": "flatpak", "package": "org.kde.krita" },
+    { "pm": "snap", "package": "krita" }
+  ]
+}

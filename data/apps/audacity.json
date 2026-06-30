@@ -1,36 +1,20 @@
 {
   "id": "audacity",
   "name": "Audacity",
-  "summary": "Phần mềm chỉnh sửa âm thanh miễn phí và mạnh mẽ",
-  "description": "Audacity là phần mềm chỉnh sửa âm thanh đa nền tảng miễn phí. Hỗ trợ ghi âm, chỉnh sửa, xuất nhiều định dạng.",
+  "summary": "Phần mềm chỉnh sửa âm thanh đa năng, miễn phí",
+  "description": "Audacity là phần mềm chỉnh sửa âm thanh đa track mã nguồn mở miễn phí. Hỗ trợ thu âm, chỉnh sửa, áp dụng hiệu ứng và xuất file âm thanh sang nhiều định dạng như MP3, WAV, FLAC.",
   "category": "multimedia",
   "icon": "audacity",
   "version": "3.5.1",
   "author": "Audacity Team",
-  "license": "GPL-2.0",
+  "license": "GPL-3.0",
   "website": "https://www.audacityteam.org/",
   "script": "",
-  "tags": [
-    "âm thanh",
-    "ghi âm",
-    "podcast"
-  ],
+  "tags": ["âm thanh", "audio", "thu âm", "chỉnh sửa âm thanh"],
   "install_methods": [
-    {
-      "pm": "apt",
-      "package": "audacity"
-    },
-    {
-      "pm": "dnf",
-      "package": "audacity"
-    },
-    {
-      "pm": "pacman",
-      "package": "audacity"
-    },
-    {
-      "pm": "flatpak",
-      "package": "org.audacityteam.Audacity"
-    }
+    { "pm": "apt", "package": "audacity" },
+    { "pm": "dnf", "package": "audacity" },
+    { "pm": "pacman", "package": "audacity" },
+    { "pm": "flatpak", "package": "org.audacityteam.Audacity" }
   ]
 }

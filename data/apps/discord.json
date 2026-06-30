@@ -1,0 +1,18 @@
+{
+  "id": "discord",
+  "name": "Discord",
+  "summary": "Nền tảng chat, voice và video dành cho cộng đồng",
+  "description": "Discord là ứng dụng giao tiếp miễn phí dành cho cộng đồng game, công nghệ và nhiều lĩnh vực khác. Hỗ trợ text chat, voice chat, video call, màn hình chia sẻ và các server cộng đồng.",
+  "category": "internet",
+  "icon": "discord",
+  "version": "0.0.64",
+  "author": "Discord Inc.",
+  "license": "Freeware",
+  "website": "https://discord.com/",
+  "script": "",
+  "tags": ["chat", "voice", "cộng đồng", "game", "server"],
+  "install_methods": [
+    { "pm": "flatpak", "package": "com.discordapp.Discord" },
+    { "pm": "snap", "package": "discord" }
+  ]
+}

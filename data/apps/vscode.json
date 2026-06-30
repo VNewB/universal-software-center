@@ -1,18 +1,18 @@
 {
   "id": "vscode",
   "name": "Visual Studio Code",
-  "summary": "Trình soạn thảo code nhẹ nhàng và mạnh mẽ",
-  "description": "VS Code là trình soạn thảo mã nguồn miễn phí từ Microsoft, hỗ trợ hầu hết mọi ngôn ngữ lập trình, tích hợp Git, debugging và hàng nghìn extension.",
+  "summary": "Trình soạn thảo code nhẹ, mạnh mẽ với hàng nghìn tiện ích",
+  "description": "Visual Studio Code là trình soạn thảo mã nguồn miễn phí của Microsoft, hỗ trợ hầu hết ngôn ngữ lập trình, tích hợp Git, debugger và marketplace với hàng nghìn extension.",
   "category": "development",
   "icon": "vscode",
-  "version": "1.87.0",
+  "version": "1.88",
   "author": "Microsoft",
   "license": "MIT",
   "website": "https://code.visualstudio.com/",
-  "script": "install-vscode.sh",
-  "tags": [
-    "lập trình",
-    "code",
-    "editor"
+  "script": "",
+  "tags": ["lập trình", "code editor", "ide", "developer"],
+  "install_methods": [
+    { "pm": "flatpak", "package": "com.visualstudio.code" },
+    { "pm": "snap", "package": "code", "sudo": true }
   ]
 }

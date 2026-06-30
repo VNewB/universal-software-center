@@ -1,36 +1,20 @@
 {
   "id": "obs-studio",
   "name": "OBS Studio",
-  "summary": "Phần mềm quay màn hình và phát trực tiếp",
-  "description": "OBS Studio là phần mềm miễn phí và mã nguồn mở để ghi màn hình và phát trực tiếp. Hỗ trợ nhiều nguồn video, hiệu ứng chuyển cảnh.",
+  "summary": "Phần mềm quay màn hình và livestream chuyên nghiệp",
+  "description": "OBS Studio là phần mềm quay màn hình và phát trực tiếp mã nguồn mở miễn phí. Hỗ trợ phát trực tiếp lên YouTube, Twitch, Facebook và nhiều nền tảng khác với hiệu suất cao.",
   "category": "multimedia",
   "icon": "obs",
-  "version": "30.0.2",
+  "version": "30.1",
   "author": "OBS Project",
   "license": "GPL-2.0",
   "website": "https://obsproject.com/",
-  "script": "install-obs.sh",
-  "tags": [
-    "quay màn hình",
-    "streaming",
-    "video"
-  ],
+  "script": "",
+  "tags": ["quay màn hình", "livestream", "stream", "recording"],
   "install_methods": [
-    {
-      "pm": "apt",
-      "package": "obs-studio"
-    },
-    {
-      "pm": "dnf",
-      "package": "obs-studio"
-    },
-    {
-      "pm": "pacman",
-      "package": "obs-studio"
-    },
-    {
-      "pm": "flatpak",
-      "package": "com.obsproject.Studio"
-    }
+    { "pm": "apt", "package": "obs-studio" },
+    { "pm": "dnf", "package": "obs-studio" },
+    { "pm": "pacman", "package": "obs-studio" },
+    { "pm": "flatpak", "package": "com.obsproject.Studio" }
   ]
 }

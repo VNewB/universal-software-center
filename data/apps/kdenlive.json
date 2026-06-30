@@ -1,36 +1,20 @@
 {
   "id": "kdenlive",
   "name": "Kdenlive",
-  "summary": "Phần mềm chỉnh sửa video chuyên nghiệp cho Linux",
-  "description": "Kdenlive là phần mềm chỉnh sửa video phi tuyến tính mã nguồn mở mạnh mẽ. Hỗ trợ nhiều track, hiệu ứng, chuyển cảnh.",
+  "summary": "Phần mềm chỉnh sửa video chuyên nghiệp mã nguồn mở",
+  "description": "Kdenlive là phần mềm chỉnh sửa video phi tuyến tính mã nguồn mở, hỗ trợ đa track, hiệu ứng, transition và render sang nhiều định dạng. Phù hợp cho cả người mới bắt đầu lẫn chuyên nghiệp.",
   "category": "multimedia",
   "icon": "kdenlive",
-  "version": "23.08.5",
-  "author": "KDE Project",
+  "version": "24.02",
+  "author": "KDE",
   "license": "GPL-2.0",
   "website": "https://kdenlive.org/",
   "script": "",
-  "tags": [
-    "video",
-    "chỉnh sửa",
-    "KDE"
-  ],
+  "tags": ["video", "chỉnh sửa video", "edit", "multimedia"],
   "install_methods": [
-    {
-      "pm": "apt",
-      "package": "kdenlive"
-    },
-    {
-      "pm": "dnf",
-      "package": "kdenlive"
-    },
-    {
-      "pm": "pacman",
-      "package": "kdenlive"
-    },
-    {
-      "pm": "flatpak",
-      "package": "org.kde.kdenlive"
-    }
+    { "pm": "apt", "package": "kdenlive" },
+    { "pm": "dnf", "package": "kdenlive" },
+    { "pm": "pacman", "package": "kdenlive" },
+    { "pm": "flatpak", "package": "org.kde.kdenlive" }
   ]
 }

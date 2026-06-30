@@ -1,40 +1,21 @@
 {
   "id": "blender",
   "name": "Blender",
-  "summary": "Phần mềm tạo mô hình 3D chuyên nghiệp",
-  "description": "Blender là phần mềm tạo nội dung 3D miễn phí và mã nguồn mở. Hỗ trợ modeling, rigging, animation, simulation, rendering.",
+  "summary": "Phần mềm đồ họa 3D chuyên nghiệp mã nguồn mở",
+  "description": "Blender là phần mềm đồ họa 3D mã nguồn mở miễn phí, hỗ trợ tạo mô hình 3D, hoạt ảnh, simulation, rendering, video editing và nhiều hơn nữa. Được sử dụng rộng rãi trong công nghiệp phim và game.",
   "category": "graphics",
   "icon": "blender",
-  "version": "4.0.2",
+  "version": "4.1",
   "author": "Blender Foundation",
-  "license": "GPL-3.0",
+  "license": "GPL-2.0",
   "website": "https://www.blender.org/",
   "script": "",
-  "tags": [
-    "3D",
-    "animation",
-    "render"
-  ],
+  "tags": ["3d", "đồ họa", "animation", "render", "modeling"],
   "install_methods": [
-    {
-      "pm": "apt",
-      "package": "blender"
-    },
-    {
-      "pm": "dnf",
-      "package": "blender"
-    },
-    {
-      "pm": "pacman",
-      "package": "blender"
-    },
-    {
-      "pm": "flatpak",
-      "package": "org.blender.Blender"
-    },
-    {
-      "pm": "snap",
-      "package": "blender"
-    }
+    { "pm": "apt", "package": "blender" },
+    { "pm": "dnf", "package": "blender" },
+    { "pm": "pacman", "package": "blender" },
+    { "pm": "flatpak", "package": "org.blender.Blender" },
+    { "pm": "snap", "package": "blender", "sudo": true }
   ]
 }

@@ -1,0 +1,18 @@
+{
+  "id": "stacer",
+  "name": "Stacer",
+  "summary": "Công cụ tối ưu và giám sát hệ thống Linux",
+  "description": "Stacer là ứng dụng tối ưu hóa và giám sát hệ thống Linux với giao diện đẹp. Cho phép xem thông tin CPU, RAM, disk, quản lý startup apps, dọn dẹp cache và quản lý tiến trình.",
+  "category": "system",
+  "icon": "stacer",
+  "version": "1.1.0",
+  "author": "Oguzhaninan",
+  "license": "GPL-3.0",
+  "website": "https://github.com/oguzhaninan/Stacer",
+  "script": "",
+  "tags": ["tối ưu", "giám sát", "system", "cleaner", "optimizer"],
+  "install_methods": [
+    { "pm": "apt", "package": "stacer" },
+    { "pm": "flatpak", "package": "com.oguzhaninan.Stacer" }
+  ]
+}

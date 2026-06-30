@@ -1,36 +1,20 @@
 {
   "id": "nautilus",
-  "name": "Files (Nautilus)",
-  "summary": "Trình quản lý tệp của GNOME đơn giản và đẹp",
-  "description": "GNOME Files (Nautilus) là trình quản lý tệp mặc định của môi trường desktop GNOME. Giao diện sạch sẽ, dễ sử dụng.",
+  "name": "Nautilus (Files)",
+  "summary": "Trình quản lý file của GNOME, đơn giản và tiện dụng",
+  "description": "Nautilus là trình quản lý file mặc định của môi trường desktop GNOME. Giao diện sạch sẽ, dễ sử dụng, hỗ trợ bookmark, xem trước file và kết nối tài nguyên mạng.",
   "category": "system",
   "icon": "system-file-manager",
   "version": "46.0",
   "author": "GNOME Project",
   "license": "GPL-2.0",
-  "website": "https://apps.gnome.org/Nautilus/",
+  "website": "https://gitlab.gnome.org/GNOME/nautilus",
   "script": "",
-  "tags": [
-    "tệp",
-    "quản lý",
-    "GNOME"
-  ],
+  "tags": ["file manager", "quản lý file", "gnome"],
   "install_methods": [
-    {
-      "pm": "apt",
-      "package": "nautilus"
-    },
-    {
-      "pm": "dnf",
-      "package": "nautilus"
-    },
-    {
-      "pm": "pacman",
-      "package": "nautilus"
-    },
-    {
-      "pm": "flatpak",
-      "package": "org.gnome.Nautilus"
-    }
+    { "pm": "apt", "package": "nautilus" },
+    { "pm": "dnf", "package": "nautilus" },
+    { "pm": "pacman", "package": "nautilus" },
+    { "pm": "flatpak", "package": "org.gnome.Nautilus" }
   ]
 }

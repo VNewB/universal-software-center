@@ -1,0 +1,19 @@
+{
+  "id": "telegram",
+  "name": "Telegram",
+  "summary": "Ứng dụng nhắn tin nhanh, bảo mật và đa nền tảng",
+  "description": "Telegram là ứng dụng nhắn tin tức thì tập trung vào tốc độ và bảo mật. Hỗ trợ nhắn tin, gọi thoại, video call, chia sẻ file lớn, kênh và nhóm với hàng triệu thành viên.",
+  "category": "internet",
+  "icon": "telegram",
+  "version": "5.0",
+  "author": "Telegram LLC",
+  "license": "GPL-2.0",
+  "website": "https://telegram.org/",
+  "script": "",
+  "tags": ["nhắn tin", "chat", "messenger", "bảo mật"],
+  "install_methods": [
+    { "pm": "apt", "package": "telegram-desktop" },
+    { "pm": "flatpak", "package": "org.telegram.desktop" },
+    { "pm": "snap", "package": "telegram-desktop" }
+  ]
+}

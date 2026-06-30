@@ -1,36 +1,21 @@
 {
   "id": "libreoffice",
   "name": "LibreOffice",
-  "summary": "Bộ ứng dụng văn phòng toàn diện miễn phí",
-  "description": "LibreOffice là bộ phần mềm văn phòng mã nguồn mở mạnh mẽ bao gồm Writer, Calc, Impress, Draw, Base và Math.",
+  "summary": "Bộ ứng dụng văn phòng mã nguồn mở đầy đủ tính năng",
+  "description": "LibreOffice là bộ ứng dụng văn phòng mã nguồn mở miễn phí, bao gồm Writer (soạn thảo), Calc (bảng tính), Impress (trình chiếu), Draw (vẽ), Base (cơ sở dữ liệu) và Math (công thức toán học).",
   "category": "office",
   "icon": "libreoffice",
-  "version": "7.6.4",
+  "version": "24.2",
   "author": "The Document Foundation",
-  "license": "MPL-2.0",
+  "license": "LGPL-3.0",
   "website": "https://www.libreoffice.org/",
   "script": "",
-  "tags": [
-    "văn phòng",
-    "soạn thảo",
-    "bảng tính"
-  ],
+  "tags": ["văn phòng", "office", "word", "excel", "trình chiếu"],
   "install_methods": [
-    {
-      "pm": "apt",
-      "package": "libreoffice"
-    },
-    {
-      "pm": "dnf",
-      "package": "libreoffice"
-    },
-    {
-      "pm": "pacman",
-      "package": "libreoffice-fresh"
-    },
-    {
-      "pm": "flatpak",
-      "package": "org.libreoffice.LibreOffice"
-    }
+    { "pm": "apt", "package": "libreoffice" },
+    { "pm": "dnf", "package": "libreoffice" },
+    { "pm": "pacman", "package": "libreoffice-fresh" },
+    { "pm": "flatpak", "package": "org.libreoffice.LibreOffice" },
+    { "pm": "snap", "package": "libreoffice" }
   ]
 }

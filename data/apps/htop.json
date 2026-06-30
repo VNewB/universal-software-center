@@ -1,0 +1,20 @@
+{
+  "id": "htop",
+  "name": "htop",
+  "summary": "Trình giám sát tiến trình hệ thống tương tác trên terminal",
+  "description": "htop là công cụ giám sát tiến trình tương tác trên terminal, cải tiến hơn lệnh top truyền thống. Hiển thị trực quan CPU, RAM, swap, danh sách tiến trình và cho phép kill process dễ dàng.",
+  "category": "system",
+  "icon": "utilities-system-monitor",
+  "version": "3.3.0",
+  "author": "htop dev team",
+  "license": "GPL-2.0",
+  "website": "https://htop.dev/",
+  "script": "",
+  "tags": ["terminal", "tiến trình", "monitor", "cpu", "ram"],
+  "install_methods": [
+    { "pm": "apt", "package": "htop" },
+    { "pm": "dnf", "package": "htop" },
+    { "pm": "pacman", "package": "htop" },
+    { "pm": "brew", "package": "htop" }
+  ]
+}

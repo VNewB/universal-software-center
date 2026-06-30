@@ -1,0 +1,18 @@
+{
+  "id": "spotify",
+  "name": "Spotify",
+  "summary": "Dịch vụ nghe nhạc trực tuyến hàng đầu thế giới",
+  "description": "Spotify là nền tảng nghe nhạc trực tuyến với hàng triệu bài hát và podcast. Hỗ trợ nghe nhạc online, tải về nghe offline (bản premium), tạo playlist và khám phá âm nhạc mới.",
+  "category": "multimedia",
+  "icon": "spotify",
+  "version": "1.2.35",
+  "author": "Spotify AB",
+  "license": "Freeware",
+  "website": "https://www.spotify.com/",
+  "script": "",
+  "tags": ["nhạc", "music", "podcast", "stream"],
+  "install_methods": [
+    { "pm": "flatpak", "package": "com.spotify.Client" },
+    { "pm": "snap", "package": "spotify" }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "wpsoffice",
+  "name": "WPS Office",
+  "summary": "Bộ ứng dụng văn phòng nhẹ, tương thích Microsoft Office",
+  "description": "WPS Office là bộ phần mềm văn phòng miễn phí với giao diện quen thuộc, hỗ trợ đọc và chỉnh sửa tài liệu Word, Excel, PowerPoint. Nhẹ, khởi động nhanh và tương thích tốt với định dạng Microsoft Office.",
+  "category": "office",
+  "icon": "wps-office",
+  "version": "11.1",
+  "author": "Kingsoft",
+  "license": "Freeware",
+  "website": "https://www.wps.com/",
+  "script": "",
+  "tags": ["văn phòng", "office", "word", "excel", "powerpoint"],
+  "install_methods": [
+    { "pm": "flatpak", "package": "com.wps.Office" }
+  ]
+}

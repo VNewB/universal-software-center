@@ -2,7 +2,7 @@
   "id": "inkscape",
   "name": "Inkscape",
   "summary": "Phần mềm thiết kế đồ họa vector chuyên nghiệp",
-  "description": "Inkscape là phần mềm thiết kế vector mã nguồn mở mạnh mẽ. Hỗ trợ SVG, XML, CSS, tương thích với Adobe Illustrator.",
+  "description": "Inkscape là phần mềm chỉnh sửa đồ họa vector mã nguồn mở, tương đương Adobe Illustrator. Sử dụng định dạng SVG làm định dạng gốc, hỗ trợ xuất nhiều định dạng khác nhau.",
   "category": "graphics",
   "icon": "inkscape",
   "version": "1.3.2",
@@ -10,27 +10,12 @@
   "license": "GPL-2.0",
   "website": "https://inkscape.org/",
   "script": "",
-  "tags": [
-    "vector",
-    "SVG",
-    "đồ họa"
-  ],
+  "tags": ["đồ họa", "vector", "svg", "thiết kế"],
   "install_methods": [
-    {
-      "pm": "apt",
-      "package": "inkscape"
-    },
-    {
-      "pm": "dnf",
-      "package": "inkscape"
-    },
-    {
-      "pm": "pacman",
-      "package": "inkscape"
-    },
-    {
-      "pm": "flatpak",
-      "package": "org.inkscape.Inkscape"
-    }
+    { "pm": "apt", "package": "inkscape" },
+    { "pm": "dnf", "package": "inkscape" },
+    { "pm": "pacman", "package": "inkscape" },
+    { "pm": "flatpak", "package": "org.inkscape.Inkscape" },
+    { "pm": "snap", "package": "inkscape" }
   ]
 }

@@ -1,0 +1,18 @@
+{
+  "id": "postman",
+  "name": "Postman",
+  "summary": "Công cụ kiểm thử API dành cho developer",
+  "description": "Postman là công cụ phát triển và kiểm thử API phổ biến nhất, cho phép gửi request HTTP, quản lý collection, viết test script và tạo tài liệu API tự động.",
+  "category": "development",
+  "icon": "postman",
+  "version": "11.0",
+  "author": "Postman Inc.",
+  "license": "Freeware",
+  "website": "https://www.postman.com/",
+  "script": "",
+  "tags": ["api", "testing", "developer", "http", "rest"],
+  "install_methods": [
+    { "pm": "flatpak", "package": "com.getpostman.Postman" },
+    { "pm": "snap", "package": "postman" }
+  ]
+}

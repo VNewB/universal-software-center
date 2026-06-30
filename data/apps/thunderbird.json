@@ -1,35 +1,21 @@
 {
   "id": "thunderbird",
   "name": "Thunderbird",
-  "summary": "Ứng dụng email mã nguồn mở từ Mozilla",
-  "description": "Mozilla Thunderbird là ứng dụng email miễn phí và mã nguồn mở với lọc thư thông minh, tìm kiếm nhanh và hỗ trợ nhiều tài khoản.",
+  "summary": "Ứng dụng email và lịch mã nguồn mở của Mozilla",
+  "description": "Mozilla Thunderbird là ứng dụng email desktop miễn phí, mã nguồn mở với giao diện thân thiện. Hỗ trợ nhiều tài khoản email, lịch, danh bạ và bộ lọc thư rác thông minh.",
   "category": "internet",
   "icon": "thunderbird",
-  "version": "115.8",
+  "version": "115.10",
   "author": "Mozilla Foundation",
   "license": "MPL-2.0",
   "website": "https://www.thunderbird.net/",
   "script": "",
-  "tags": [
-    "email",
-    "thư điện tử"
-  ],
+  "tags": ["email", "lịch", "thư điện tử", "mozilla"],
   "install_methods": [
-    {
-      "pm": "apt",
-      "package": "thunderbird"
-    },
-    {
-      "pm": "dnf",
-      "package": "thunderbird"
-    },
-    {
-      "pm": "pacman",
-      "package": "thunderbird"
-    },
-    {
-      "pm": "flatpak",
-      "package": "org.mozilla.Thunderbird"
-    }
+    { "pm": "apt", "package": "thunderbird" },
+    { "pm": "dnf", "package": "thunderbird" },
+    { "pm": "pacman", "package": "thunderbird" },
+    { "pm": "flatpak", "package": "org.mozilla.Thunderbird" },
+    { "pm": "snap", "package": "thunderbird" }
   ]
 }
