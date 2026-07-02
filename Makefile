@@ -31,8 +31,8 @@ BUILDDIR = build
 SOURCES  = $(SRCDIR)/main.cpp
 OBJECTS  = $(BUILDDIR)/main.o
 
-PREFIX  = /usr/local
-DATADIR = $(PREFIX)/share/store
+PREFIX = /usr/local/bin
+DATADIR = $(PREFIX)/bin
 BINDIR  = $(PREFIX)/bin
 
 .PHONY: all clean install uninstall run
@@ -62,7 +62,7 @@ install: all
 	install -d $(DATADIR)/scripts
 	install -d $(DATADIR)/fonts
 	install -m 755 $(TARGET)           $(BINDIR)/$(TARGET)
-	install -m 644 data/apps.json      $(DATADIR)/data/
+	#install -m 644 data/apps.json      $(DATADIR)/data/
 	install -m 644 data/apps/*.json    $(DATADIR)/data/apps/
 	install -m 755 scripts/*.sh        $(DATADIR)/scripts/
 	install -m 644 fonts/*.ttf         $(DATADIR)/fonts/ 2>/dev/null || true

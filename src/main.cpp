@@ -1220,7 +1220,7 @@ static GtkWidget* create_demo_card(){
     gtk_widget_set_tooltip_text(eb,"Chạy lệnh khám phá (thêm lệnh vào g_state.about_script)");
     g_signal_connect(eb,"clicked",G_CALLBACK(+[](GtkButton*,gpointer){
         std::string cmd=g_state.about_script.empty()
-            ?"/usr/local/bin/store\" && sleep 2' &"
+            ?"/usr/local/bin/Store-x86_64.appimage\" && sleep 2' &"
             :"bash \""+g_state.about_script+"\" &";
         system(cmd.c_str());
     }),nullptr);
