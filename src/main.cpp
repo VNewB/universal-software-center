@@ -1221,7 +1221,7 @@ static GtkWidget* create_demo_card(){
     gtk_widget_set_tooltip_text(eb,"Chạy lệnh khám phá (thêm lệnh vào g_state.about_script)");
     g_signal_connect(eb,"clicked",G_CALLBACK(+[](GtkButton*,gpointer){
         std::string cmd=g_state.about_script.empty()
-            ?"bash -c 'echo \"[VNLF] Thêm lệnh khám phá vào about_script trong main()\" && sleep 2' &"
+            ?"xdg-open https://apps.vietnamlinuxfamily.net &"
             :"bash \""+g_state.about_script+"\" &";
         system(cmd.c_str());
     }),nullptr);
@@ -1455,7 +1455,7 @@ static void show_about_page(){
     gtk_box_pack_start(GTK_BOX(content),gtk_separator_new(GTK_ORIENTATION_HORIZONTAL),FALSE,FALSE,0);
 
     GtkWidget*abtnrow=gtk_box_new(GTK_ORIENTATION_HORIZONTAL,12);gtk_widget_set_halign(abtnrow,GTK_ALIGN_START);gtk_box_pack_start(GTK_BOX(content),abtnrow,FALSE,FALSE,0);
-
+/*
     std::string *url_ptr=new std::string(g_state.about_url.empty()?"https://apps.vietnamlinuxfamily.net":g_state.about_url);
     GtkWidget*wb=gtk_button_new_with_label("🌐 Trang web cộng đồng");
     gtk_style_context_add_class(gtk_widget_get_style_context(wb),"about-action-btn");
@@ -1463,7 +1463,8 @@ static void show_about_page(){
     g_signal_connect_data(wb,"clicked",G_CALLBACK(+[](GtkButton*,gpointer ud){system(("xdg-open \""+*(std::string*)ud+"\" &").c_str());}),
         url_ptr,[](gpointer p,GClosure*){delete(std::string*)p;},(GConnectFlags)0);
     gtk_box_pack_start(GTK_BOX(abtnrow),wb,FALSE,FALSE,0);
-
+*/
+/*
     std::string *script_ptr=new std::string(g_state.about_script);
     GtkWidget*sb2=gtk_button_new_with_label("⚙ Chạy script cộng đồng");
     gtk_style_context_add_class(gtk_widget_get_style_context(sb2),"about-script-btn");
@@ -1472,7 +1473,7 @@ static void show_about_page(){
     g_signal_connect_data(sb2,"clicked",G_CALLBACK(+[](GtkButton*,gpointer ud){std::string*s=(std::string*)ud;if(!s->empty())system(("bash \""+*s+"\" &").c_str());}),
         script_ptr,[](gpointer p,GClosure*){delete(std::string*)p;},(GConnectFlags)0);
     gtk_box_pack_start(GTK_BOX(abtnrow),sb2,FALSE,FALSE,0);
-
+*/
     gtk_widget_show_all(g_state.about_box);
     gtk_stack_set_visible_child_name(GTK_STACK(g_state.stack),"about");
 }

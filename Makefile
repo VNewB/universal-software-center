@@ -31,8 +31,9 @@ BUILDDIR = build
 SOURCES  = $(SRCDIR)/main.cpp
 OBJECTS  = $(BUILDDIR)/main.o
 
+# Đóng gói cài đặt của dev, sửa lại PREFIX để cài đặt vào thư mục mong muốn
 PREFIX  = /usr/local
-DATADIR = $(PREFIX)/share/store
+DATADIR = $(PREFIX)/bin
 BINDIR  = $(PREFIX)/bin
 
 .PHONY: all clean install uninstall run
@@ -49,6 +50,7 @@ $(TARGET): $(OBJECTS)
 $(BUILDDIR)/main.o: $(SRCDIR)/main.cpp
 	$(CXX) $(CXXFLAGS) $(GTK_CFLAGS) -c $< -o $@
 
+
 run: all
 	./$(TARGET)
 
@@ -62,7 +64,7 @@ install: all
 	install -d $(DATADIR)/scripts
 	install -d $(DATADIR)/fonts
 	install -m 755 $(TARGET)           $(BINDIR)/$(TARGET)
-	install -m 644 data/apps.json      $(DATADIR)/data/
+	#install -m 644 data/apps.json      $(DATADIR)/data/
 	install -m 644 data/apps/*.json    $(DATADIR)/data/apps/
 	install -m 755 scripts/*.sh        $(DATADIR)/scripts/
 	install -m 644 fonts/*.ttf         $(DATADIR)/fonts/ 2>/dev/null || true
