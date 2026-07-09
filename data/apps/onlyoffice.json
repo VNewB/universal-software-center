@@ -1,5 +1,5 @@
 {
-  "id": "onlyoffice",
+  "id": "onlyoffice-desktopeditors",
   "name": "ONLYOFFICE",
   "summary": "Bộ ứng dụng văn phòng tương thích cao với Microsoft Office",
   "description": "ONLYOFFICE Desktop Editors là bộ phần mềm văn phòng mã nguồn mở miễn phí, hỗ trợ soạn thảo văn bản, bảng tính và trình chiếu với khả năng tương thích cao với định dạng .docx, .xlsx, .pptx.",
@@ -9,10 +9,6 @@
   "author": "Ascensio System SIA",
   "license": "AGPL-3.0",
   "website": "https://www.onlyoffice.com/",
-  "script": "",
-  "tags": ["văn phòng", "office", "word", "excel", "powerpoint"],
-  "install_methods": [
-    { "pm": "flatpak", "package": "org.onlyoffice.desktopeditors" },
-    { "pm": "snap", "package": "onlyoffice-desktopeditors" }
-  ]
+  "script": "install-onlyoffice.sh",
+  "tags": ["văn phòng", "office", "word", "excel", "powerpoint"]
 }

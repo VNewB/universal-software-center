@@ -31,7 +31,7 @@ BUILDDIR = build
 SOURCES  = $(SRCDIR)/main.cpp
 OBJECTS  = $(BUILDDIR)/main.o
 
-PREFIX = /usr/local/bin
+PREFIX = /usr/local
 DATADIR = $(PREFIX)/bin
 BINDIR  = $(PREFIX)/bin
 

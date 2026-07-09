@@ -9,28 +9,10 @@
   "author": "The Document Foundation",
   "license": "MPL-2.0",
   "website": "https://www.libreoffice.org/",
-  "script": "",
+  "script": "install-libreoffice.sh",
   "tags": [
     "văn phòng",
     "soạn thảo",
     "bảng tính"
-  ],
-  "install_methods": [
-    {
-      "pm": "apt",
-      "package": "libreoffice"
-    },
-    {
-      "pm": "dnf",
-      "package": "libreoffice"
-    },
-    {
-      "pm": "pacman",
-      "package": "libreoffice-fresh"
-    },
-    {
-      "pm": "flatpak",
-      "package": "org.libreoffice.LibreOffice"
-    }
   ]
 }

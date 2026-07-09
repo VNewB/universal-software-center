@@ -239,18 +239,18 @@ static void remove_from_log(const std::string& app_id) {
 }
 // ─── System install detection ─────────────────────────────────────────────────
 static bool check_app_installed_system(const AppInfo& app) {
-    if (cmd_exists(app.id)) return true;
-    std::vector<std::string> paths = {
-        "/usr/bin/"+app.id, "/usr/local/bin/"+app.id,
-        "/bin/"+app.id, "/snap/bin/"+app.id,
+    const std::vector<std::string> paths = {
+        "/usr/bin/" + app.id,
+        "/usr/local/bin/" + app.id,
+        "/bin/" + app.id,
+        "/snap/bin/" + app.id,
     };
-    for (auto& p:paths) if (access(p.c_str(), X_OK)==0) return true;
-    if (is_pm_available("flatpak")) {
-        if (system(("flatpak list --app 2>/dev/null | grep -qi '"+app.id+"'").c_str())==0) return true;
+
+    for (const auto& path : paths) {
+        if (access(path.c_str(), X_OK) == 0)
+            return true;
     }
-    if (is_pm_available("snap")) {
-        if (system(("snap list 2>/dev/null | grep -qi '"+app.id+"'").c_str())==0) return true;
-    }
+
     return false;
 }
 
@@ -1133,6 +1133,7 @@ static void show_method_chooser(AppInfo& app, bool for_uninstall=false) {
 static void on_install_clicked(GtkButton*,gpointer ud){
     AppInfo*app=(AppInfo*)ud; if(!app)return; show_method_chooser(*app,false);
 }
+
 static void on_uninstall_clicked(GtkButton*,gpointer ud){
     AppInfo*app=(AppInfo*)ud; if(!app)return;
     GtkWidget*confirm=gtk_message_dialog_new(GTK_WINDOW(g_state.window),GTK_DIALOG_MODAL,

@@ -1,10 +1,23 @@
-#!/bin/bash
+#!/bin/sh
 # install-libreoffice.sh - VNLF App Store
-echo "[VNLF] Cài đặt LibreOffice..."
-if command -v apt &>/dev/null; then sudo apt update && sudo apt install -y libreoffice
-elif command -v dnf &>/dev/null; then sudo dnf install -y libreoffice
-elif command -v pacman &>/dev/null; then sudo pacman -S --noconfirm libreoffice
-elif command -v zypper &>/dev/null; then sudo zypper install -y libreoffice
-elif command -v flatpak &>/dev/null; then flatpak install -y flathub libreoffice
-else echo "[VNLF] Không tìm thấy package manager!"; exit 1; fi
+set -e
+
+if ! command -v apt; then
+    echo "[VNLF] Không tìm thấy package manager!"; exit 1
+fi
+
+# Nếu LibreOffice đã được cài sẵn -> chỉ gỡ, KHÔNG cài lại
+if sudo chroot /target ls /usr/bin/ | grep libreoffice; then
+    echo "[VNLF] Phát hiện LibreOffice đã cài sẵn, đang gỡ bỏ..."
+    sudo chroot /target apt-get autoremove -y libreoffice
+    echo "[VNLF] Đã gỡ LibreOffice thành công!"
+    exit 0
+fi
+
+echo "[VNLF] Chưa cài LibreOffice, tiến hành cài đặt..."
+set +e
+sudo chroot /target apt update
+sudo chroot /target apt install -y libreoffice
+set -e
+
 [ $? -eq 0 ] && echo "[VNLF] Cài đặt LibreOffice thành công!" || { echo "[VNLF] Cài đặt thất bại!"; exit 1; }
