@@ -301,7 +301,7 @@ static std::string app_to_json(const AppInfo& app) {
     j+="  \"description\": \""+esc(app.description)+"\",\n";
     j+="  \"category\": \""+esc(app.category)+"\",\n";
     j+="  \"icon\": \""+esc(app.icon)+"\",\n";
-    j+="  \"version\": \""+esc(app.version)+"\",\n";
+//    j+="  \"version\": \""+esc(app.version)+"\",\n";
     j+="  \"author\": \""+esc(app.author)+"\",\n";
     j+="  \"license\": \""+esc(app.license)+"\",\n";
     j+="  \"website\": \""+esc(app.website)+"\",\n";
